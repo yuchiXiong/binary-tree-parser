@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/binary-tree-parser/static/css/main.21bf13ce.css",
+    "main.js": "/binary-tree-parser/static/js/main.fb9c2892.js",
+    "index.html": "/binary-tree-parser/index.html",
+    "main.21bf13ce.css.map": "/binary-tree-parser/static/css/main.21bf13ce.css.map",
+    "main.fb9c2892.js.map": "/binary-tree-parser/static/js/main.fb9c2892.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.21bf13ce.css",
+    "static/js/main.fb9c2892.js"
+  ]
+}
