@@ -1,46 +1,12 @@
-# Getting Started with Create React App
+# 项目说明
+`leetcode` 关于二叉树的题目中，给定的 `case` 通常是层次遍历二叉树的序列。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+例如：`1, 2, 3, null, null, 4` 实际描述的是如下图所示的二叉树
 
-## Available Scripts
+![image](https://user-images.githubusercontent.com/48373109/175571586-a7220c51-d36f-4b0e-a354-24279ca94dde.png)
 
-In the project directory, you can run:
+`leetcode` 使用这种方式描述二叉树时，看起来给定的是一个同时包含数字与 `null` 的数组，但实际的函数入参依然是标准的 `TreeNode` 实例，在解题过程中 `case` 有时候没有很好的办法通过给定的 `case` 来进行 `debug` 。
 
-### `npm start`
+本工具实现了一个基于层次遍历序列还原二叉树的函数，同时提供了一个 **聊胜于无** 的绘制功能，它可以 **有限** 的帮助你了解 `case` 描述的二叉树的结构；另外工具还提供了一个根据解析结果自动生成 `CPP` 标准创建代码的功能，使你可以快速的在代码中创建 `case` 描述的二叉树以进行更细致的 `debug` （效果如下图）。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://user-images.githubusercontent.com/48373109/175572598-399e9cc2-10e9-4268-a687-7e2c1920fd30.png)
