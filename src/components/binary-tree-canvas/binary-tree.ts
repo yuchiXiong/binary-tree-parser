@@ -1,11 +1,11 @@
 export default class BinaryTree<T> {
   public val: T;
-  public left: BinaryTree<T> | null = null;
-  public right: BinaryTree<T> | null = null;
+  public left: BinaryTree<T> | null | undefined = undefined;
+  public right: BinaryTree<T> | null | undefined = undefined;
   private _bfs_queue: Array<BinaryTree<T>> = [];
 
   static generate<T>(nodes: Array<T | null>): BinaryTree<T> | null {
-    if (nodes[0] === null) return null;
+    if (nodes[0] === null || nodes.length === 0) return null;
 
     let parentIndex = 0, parentIndexOffeset = 0;
     let offset: 1 | 2 = 1;
@@ -18,8 +18,8 @@ export default class BinaryTree<T> {
 
       queue[i] = node !== null ? new BinaryTree<T>(node) : null;
 
-      parentIndex = Math.floor((i - offset) / 2) + parentIndexOffeset;
 
+      parentIndex = Math.floor((i - offset) / 2) + parentIndexOffeset;
       if (nodes[parentIndex] !== null) {
         queue[parentIndex]?.left === undefined
           ? queue[parentIndex]!.left = queue[i]

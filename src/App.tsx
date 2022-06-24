@@ -10,12 +10,19 @@ function App() {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.value = '[]';
+    }
+  }, []);
+
   const handleParse = () => {
     if (!inputRef.current?.value || inputRef.current?.value.trim() === '') return;
     setTreeStr(inputRef.current?.value);
   }
 
   const tree = BinaryTree.generate<string>(JSON.parse(treeStr));
+
   return (
     <div className="App">
       <div>
