@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
+import BinaryTreeCanvas from './components/binary-tree-canvas';
+import BinaryTree from './components/binary-tree-canvas/binary-tree';
 
 function App() {
+
+
+  const [treeStr, setTreeStr] = useState<string>('[]');
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleParse = () => {
+    if (!inputRef.current?.value || inputRef.current?.value.trim() === '') return;
+    setTreeStr(inputRef.current?.value);
+  }
+
+  const tree = BinaryTree.generate<string>(JSON.parse(treeStr));
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <input ref={inputRef} />
+        <button onClick={handleParse}>parse</button>
+      </div>
+      <div>
+        {tree && <BinaryTreeCanvas binaryTree={tree} key={treeStr} />}
+      </div>
     </div>
   );
 }
