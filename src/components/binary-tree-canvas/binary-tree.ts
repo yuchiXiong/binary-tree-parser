@@ -32,6 +32,7 @@ export default class BinaryTree<T> {
 
       offset = offset === 1 ? 2 : 1;
     }
+
     return queue[0];
   }
 
@@ -68,4 +69,27 @@ export default class BinaryTree<T> {
     return result;
   }
 
+  toCPP(): string {
+    console.log(this);
+    return `
+    
+    struct TreeNode
+    {
+      int val;
+      TreeNode *left;
+      TreeNode *right;
+      TreeNode() : val(0), left(nullptr), right(nullptr) {}
+      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    };
+
+    TreeNode *tn = ${this._toCPP()};
+    `;
+  }
+
+  _toCPP(): string {
+    if (!this.left && !this.right) return `new TreeNode(${this.val})`;
+    if (this.left && !this.right) return `new TreeNode(${this.val}, ${this.left._toCPP()})`;
+    return `new TreeNode(${this.val}, ${this.left?._toCPP() || 'nullptr'}, ${this.right?._toCPP() || 'nullptr'})`
+  }
 }

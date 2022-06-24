@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { BinaryTreeNode, drawBinaryTree } from 'binary-tree-visualizer';
+import { BinaryTreeNode, drawBinaryTree, VisualizationType } from 'binary-tree-visualizer';
 import BinaryTree from './binary-tree';
 
 interface BinaryTreeCanvasProps {
@@ -11,14 +11,17 @@ const BinaryTreeCanvas: React.FC<BinaryTreeCanvasProps> = ({
 }) => {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  console.log(binaryTree);
   useEffect(() => {
     draw(binaryTree as BinaryTree<string>);
   }, []);
 
   const draw: (root: BinaryTree<string>) => void = root => {
     const rootNode = new BinaryTreeNode<string>(root.val);
-    canvasRef.current && drawBinaryTree(_draw(root, rootNode), canvasRef.current);
+    canvasRef.current && drawBinaryTree(_draw(root, rootNode), canvasRef.current, {
+      maxHeight: 100,
+      maxWidth: 100,
+      type: VisualizationType.PRETTY
+    });
   }
 
   const _draw: (root: BinaryTree<string>, rootNode: BinaryTreeNode<string>) => BinaryTreeNode<string> = (root, rootNode) => {
