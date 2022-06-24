@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import BinaryTreeCanvas from './components/binary-tree-canvas';
 import BinaryTree from './components/binary-tree-canvas/binary-tree';
 import './App.scss';
@@ -10,6 +10,13 @@ function App() {
   const [showType, setShowType] = useState<'canvas' | 'code'>('canvas');
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      setTreeStr('1,2,3,null,4,5');
+      textareaRef.current.value = '1,2,3,null,4,5';
+    }
+  }, []);
 
   const handleParse = () => {
     if (!textareaRef.current?.value || textareaRef.current?.value.trim() === '') return;
